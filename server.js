@@ -2,6 +2,10 @@
 var express = require('express'),
     config = require('./Configuration');
 
+var Find_Routes = require('./Routes/Find');
+
+app.use('/find', Find_Routes);
+
 var app = express();
 
 app.listen(config.port, () => {
