@@ -1,0 +1,7 @@
+{
+    "name" : "find-locations-route",
+    "version" : "1.0.0",
+    "author" : "Henry Pye",
+    "main" : "index.js",
+    "description" : "The Find Location routes for a Location API, for a Smart Home system"
+}
