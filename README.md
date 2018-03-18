@@ -2,7 +2,7 @@
 ###### An API for the managing of Locations in a Smart Home network
 
 ## CyberSmart
-CyberSmart is a system designed to control and manage devices within your home by utilising a range of low cost hardware and Open Source Software solutions. The project was initially started as a University Project. 
+CyberSmart is a system designed to control and manage Locations within your home by utilising a range of low cost hardware and Open Source Software solutions. The project was initially started as a University Project. 
 We set out to provide a solution for low-cost home automation. The very first goal of this project was to provide a switch, in a browser or in an app, that could control a lamp within the home. This has been achieved using Node for backend Operations, Python scripts for interaction with GPIO pins and Linux based operating systems to run it on. The User Interface has been provided using ReactJS. The project has been designed, utilising Microservices. Each aspect of the system operates as a Microservice.
 
 ### A big thanks to the following projects and people, without them, CyberSmart would not be possible.
@@ -13,7 +13,7 @@ We set out to provide a solution for low-cost home automation. The very first go
 * [Lubuntu](https://lubuntu.net/) - For creating a neat, lightweight OS solution. The main hub uses Lubuntu.
 
 ### CyberSmart Related Repositories
-* [Devices API](https://github.com/UniversityGroup/CyberSmart-Devices-API) - For handling of Devices
+* [Locations API](https://github.com/UniversityGroup/CyberSmart-Locations-API) - For handling of Locations
 * [Locations API](https://github.com/UniversityGroup/CyberSmart-Locations-API) - For the handling of Locations
 * [Database](https://github.com/UniversityGroup/CyberSmart-DB) - CyberSmart Database
 * [User Interface](https://github.com/UniversityGroup/CyberSmart-React-UI) - CyberSmart User Interface 
@@ -31,41 +31,41 @@ We set out to provide a solution for low-cost home automation. The very first go
 ### Routes
 #### Find
 ##### route.get('/all', function(req, res)
-This route returns all Devices in the given database context. It takes no parameters. 
+This route returns all Locations in the given database context. It takes no parameters. 
 The possible returns are:
-* `200 - OK` : This means the request was successful. It should return an array of JSON Objects with all Devices in the database. 
-* `404 - Not Found` : This means the request failed or no Devices were found.
+* `200 - OK` : This means the request was successful. It should return an array of JSON Objects with all Locations in the database. 
+* `404 - Not Found` : This means the request failed or no Locations were found.
 * `500 - Server Error` : This means something went wrong with the function being called in the controller.
 
 ##### route.get('/location', function(req, res)
-This route returns all Devices within a given location. It takes one parameter, Location name. 
+This route returns all Locations within a given location. It takes one parameter, Location name. 
 The possible returns are:
-* `200 - OK` : This means the request was successful. It should return an array of JSON Objects with all devices in the given location.
-* `404 - Not Found` : This means the request failed or no Devices were found in the location.
+* `200 - OK` : This means the request was successful. It should return an array of JSON Objects with all Locations in the given location.
+* `404 - Not Found` : This means the request failed or no Locations were found in the location.
 * `500 - Server Error` : This means something went wrong with the function being called in the controller.
 
 ##### route.get('/connected', function(req, res) 
-This route returns all connected Devices. It takes no parameters and returns a list of connected devices.
+This route returns all connected Locations. It takes no parameters and returns a list of connected Locations.
 The format of the returned items is as follows:
 * `IP`
     - `String`
 * `MAC`
     - `String`
 The possible returns are:
-* `200 - OK` : This means Devices were found and have been returned.
-* `404 - Not found` : This means no Devices were found and the request failed.
+* `200 - OK` : This means Locations were found and have been returned.
+* `404 - Not found` : This means no Locations were found and the request failed.
 * `500 - Server Error` : This means there was a server error during the request, causing the request to fail.
 
 ##### route.get('/:id', function(req, res) 
-This route finds a Device by its ID. It takes on parameter, ID, which must be passed in in the format `/<id>` in the URL.
+This route finds a Location by its ID. It takes on parameter, ID, which must be passed in in the format `/<id>` in the URL.
 The possible returns are:
-* `200 - OK` : This means the request was successful. It should return a JSON Object containing information about the Device with the ID requested.
-* `404 - Not Found` : This means the request failed or no Device with the ID requested were found.
+* `200 - OK` : This means the request was successful. It should return a JSON Object containing information about the Location with the ID requested.
+* `404 - Not Found` : This means the request failed or no Location with the ID requested were found.
 * `500 - Server Error` : This means something went wrong with the function being called in the controller.
 
 #### Insert
-##### route.post('/device', function(req, res) 
-This route inserts a new Device into the database. It can take five parameters. These are:
+##### route.post('/add', function(req, res) 
+This route inserts a new Location into the database. It can take five parameters. These are:
 * `name`:
     - `String`
     - `Required`
@@ -84,61 +84,61 @@ This route inserts a new Device into the database. It can take five parameters. 
     - `Date`
     - `Default` : Date.now
 The possible returns are:
-* `201 - Created` : This means a new entry was created in the Device table of the database.
-* `401 - Unauthorized` : This means the request was unauthorized and the Device was not inserted into the database.
+* `201 - Created` : This means a new entry was created in the Location table of the database.
+* `401 - Unauthorized` : This means the request was unauthorized and the Location was not inserted into the database.
 * `500 - Server Error` : This means the request failed, resulting in a Server Error.
 
 #### Insert
 ##### route.post('/state', function(req, res) 
-This route updated a Devices state given an ID and a State. The ID must be the same as the _id of a Device in the database.
+This route updated a Locations state given an ID and a State. The ID must be the same as the _id of a Location in the database.
 The parameters are:
-* `_id` : The ID of the Device having its state altered.
+* `_id` : The ID of the Location having its state altered.
 * `state` : The state can be a 1 or a 0, 1 for `ON` and 0 for `OFF`
 The possible resturns are:
-* `200 - OK` : This means the state of the Device was successfully altered.
-* `401 - Unauthorized` : This means the request failed and the Devices state was not altered.
+* `200 - OK` : This means the state of the Location was successfully altered.
+* `401 - Unauthorized` : This means the request failed and the Locations state was not altered.
 * `500 - Server Error` : This means there was an unexpected crash with the method being called by this controller.
 
 #### Delete
 ##### route.post('/delete', function(req, res) 
-This route calls the delete device function in the Delete handler. The possible parameters are:
-* `_id` : The ID of the Device being deleted
+This route calls the delete Location function in the Delete handler. The possible parameters are:
+* `_id` : The ID of the Location being deleted
 The possible returns are:
-* `200 - OK` - The function executed successfully, resulting in the deletion of a Device.
+* `200 - OK` - The function executed successfully, resulting in the deletion of a Location.
 * `401 - Unauthorized` : This means the request was unauthorized, meaning something went wrong.
 * `500 - Server Error` : This means something went wrong with the delete function, resulting in a server crash.
 
 ### Handlers
 #### Find
 ##### FindAll()
-This method searches the database for all Devices. If none found or an error, it rejects the request.
+This method searches the database for all Locations. If none found or an error, it rejects the request.
 It takes no parameters.
-If the request succeeds, all Devices in the database will be returned.
+If the request succeeds, all Locations in the database will be returned.
 
 ##### FindById(id)
-This method searches the database for any Devices matching the ID of the id parameter.
-If no Devices are found or an error occurs, the request is rejected.
-If the request succeeds, the Device matching that ID will be returned.
+This method searches the database for any Locations matching the ID of the id parameter.
+If no Locations are found or an error occurs, the request is rejected.
+If the request succeeds, the Location matching that ID will be returned.
 
 ##### FindByLocation(location)
-This method searches the database for any Devices in the given location. If no Devices are found or an error occurs, it rejects the request.
-If the request succeeds, all Devices in the location will be returned.
+This method searches the database for any Locations in the given location. If no Locations are found or an error occurs, it rejects the request.
+If the request succeeds, all Locations in the location will be returned.
 
 ##### FindConnected()
-This method performs the [ARP](https://www.tutorialspoint.com/unix_commands/arp.htm) command in order to resolve the connected devices and their hardware addresses.
+This method performs the [ARP](https://www.tutorialspoint.com/unix_commands/arp.htm) command in order to resolve the connected Locations and their hardware addresses.
 
 #### Insert
-##### AddDevice(device)
-This method adds a Device to the database, given a device object. The Device object is then parsed into a newDevice object.
-If it fails to add a Device to the database, the request is rejected and the method fails.
-If the request succeeds, it will return the created Device.
+##### AddLocation(Location)
+This method adds a Location to the database, given a Location object. The Location object is then parsed into a newLocation object.
+If it fails to add a Location to the database, the request is rejected and the method fails.
+If the request succeeds, it will return the created Location.
 
 #### Update
 ##### UpdateStateById(id, state)
-This method finds a Device given an ID and updates the state. If no Device is found or an error occurs, the request is rejected.
-If the request succeeds, it will return the Device matching the given ID and its updated state.
+This method finds a Location given an ID and updates the state. If no Location is found or an error occurs, the request is rejected.
+If the request succeeds, it will return the Location matching the given ID and its updated state.
 
 #### Delete
-##### Device(id)
-This method finds a Device given an ID and deletes it. If there is an error during execution or the result is null, the method fails and is rejected.
-If the method executes correctly, it sets active to false on the given Device.
+##### Location(id)
+This method finds a Location given an ID and deletes it. If there is an error during execution or the result is null, the method fails and is rejected.
+If the method executes correctly, it sets active to false on the given Location.
