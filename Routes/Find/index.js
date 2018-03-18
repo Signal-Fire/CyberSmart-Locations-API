@@ -10,7 +10,7 @@ route.get('/:id', function(req, res) {
             res.status(404).send("{ error : " + error + "}");
         });
     } catch (ex) {
-        res.status(500).send("{ error : unexpected server crash }");
+        res.status(500).send("{ error : " + ex + " }");
     }
 });
 
@@ -22,8 +22,21 @@ route.get('/name', function(req, res) {
             res.status(404).send("{ error : " + error + "}");
         });
     } catch (ex) {
-        res.status(500).send("{ error : unexpected server crash }");
+        res.status(500).send("{ error : " + ex + " }");
     }
 });
+
+route.get('/all', function(req, res) {
+    try {
+        Finder.FindAll().then(locations => {
+            res.status(200).send(locations);
+        }).catch(error => {
+            res.status(404).send("{ error : " + error + "}");
+        });
+    } catch (ex) {
+        res.status(500).send("{ error : " + ex + " }");
+    }
+});
+
 
 module.exports = route;

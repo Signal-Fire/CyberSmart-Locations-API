@@ -27,6 +27,17 @@ class Find {
             });
         });
     }
+
+    FindAll() {
+        return new Promise(function(resolve, reject) {
+            Location.find({}, function(err, result) {
+                if (err || result === null)
+                    return reject("Unable to find Locations");
+
+                return resolve(result);
+            });
+        });
+    }
 }
 
 module.exports = Find;
