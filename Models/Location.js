@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-var bcrypt = require('bcryptjs');
-var config = require('../../../config/Configuration');
+var config = require('../Configuration');
 
 var Schema = mongoose.Schema;
 
