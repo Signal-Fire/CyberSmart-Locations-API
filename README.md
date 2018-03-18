@@ -5,7 +5,7 @@
 CyberSmart is a system designed to control and manage Locations within your home by utilising a range of low cost hardware and Open Source Software solutions. The project was initially started as a University Project. 
 We set out to provide a solution for low-cost home automation. The very first goal of this project was to provide a switch, in a browser or in an app, that could control a lamp within the home. This has been achieved using Node for backend Operations, Python scripts for interaction with GPIO pins and Linux based operating systems to run it on. The User Interface has been provided using ReactJS. The project has been designed, utilising Microservices. Each aspect of the system operates as a Microservice.
 
-### A big thanks to the following projects and people, without them, CyberSmart would not be possible.
+#### A big thanks to the following projects and people, without them, CyberSmart would not be possible.
 * [NodeJS](https://nodejs.org/en/) - For creating a fast, lightweight solution for RESTful web servers! All APIs have been developed in Node. 
 * [ReactJS](https://reactjs.org/) - For creating an easy to work with UI design solution. The Frontend design has been developed in ReactJS.
 * [Python](https://www.python.org/) - For hardware level interaction (GPIO pins).
@@ -44,18 +44,6 @@ The possible returns are:
 * `404 - Not Found` : This means the request failed or no Locations were found in the location.
 * `500 - Server Error` : This means something went wrong with the function being called in the controller.
 
-##### route.get('/connected', function(req, res) 
-This route returns all connected Locations. It takes no parameters and returns a list of connected Locations.
-The format of the returned items is as follows:
-* `IP`
-    - `String`
-* `MAC`
-    - `String`
-The possible returns are:
-* `200 - OK` : This means Locations were found and have been returned.
-* `404 - Not found` : This means no Locations were found and the request failed.
-* `500 - Server Error` : This means there was a server error during the request, causing the request to fail.
-
 ##### route.get('/:id', function(req, res) 
 This route finds a Location by its ID. It takes on parameter, ID, which must be passed in in the format `/<id>` in the URL.
 The possible returns are:
@@ -67,9 +55,6 @@ The possible returns are:
 ##### route.post('/add', function(req, res) 
 This route inserts a new Location into the database. It can take five parameters. These are:
 * `name`:
-    - `String`
-    - `Required`
-* `location`:
     - `String`
     - `Required`
 * `state`:
@@ -89,16 +74,6 @@ The possible returns are:
 * `500 - Server Error` : This means the request failed, resulting in a Server Error.
 
 #### Insert
-##### route.post('/state', function(req, res) 
-This route updated a Locations state given an ID and a State. The ID must be the same as the _id of a Location in the database.
-The parameters are:
-* `_id` : The ID of the Location having its state altered.
-* `state` : The state can be a 1 or a 0, 1 for `ON` and 0 for `OFF`
-The possible resturns are:
-* `200 - OK` : This means the state of the Location was successfully altered.
-* `401 - Unauthorized` : This means the request failed and the Locations state was not altered.
-* `500 - Server Error` : This means there was an unexpected crash with the method being called by this controller.
-
 #### Delete
 ##### route.post('/delete', function(req, res) 
 This route calls the delete Location function in the Delete handler. The possible parameters are:
@@ -119,13 +94,6 @@ If the request succeeds, all Locations in the database will be returned.
 This method searches the database for any Locations matching the ID of the id parameter.
 If no Locations are found or an error occurs, the request is rejected.
 If the request succeeds, the Location matching that ID will be returned.
-
-##### FindByLocation(location)
-This method searches the database for any Locations in the given location. If no Locations are found or an error occurs, it rejects the request.
-If the request succeeds, all Locations in the location will be returned.
-
-##### FindConnected()
-This method performs the [ARP](https://www.tutorialspoint.com/unix_commands/arp.htm) command in order to resolve the connected Locations and their hardware addresses.
 
 #### Insert
 ##### AddLocation(Location)
