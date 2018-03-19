@@ -1,8 +1,11 @@
 /* jshint esversion: 6*/
 var express = require('express'),
-    config = require('./Configuration');
+    config = require('./Configuration'),
+    cors = require('cors');
 
 var app = express();
+
+app.use(cors());
 
 var Find_Routes = require('./Routes/Find');
 var Insert_Routes = require('./Routes/Insert');
