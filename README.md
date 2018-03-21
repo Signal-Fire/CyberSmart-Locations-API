@@ -79,9 +79,17 @@ The possible returns are:
 
 #### Insert
 #### Delete
-##### route.post('/delete', function(req, res) 
-This route calls the delete Location function in the Delete handler. The possible parameters are:
-* `_id` : The ID of the Location being deleted
+##### route.post('/:id', function(req, res) 
+This route calls the delete Location by ID function in the Delete handler. The possible parameters are:
+* `id` : The ID of the Location being deleted
+The possible returns are:
+* `200 - OK` - The function executed successfully, resulting in the deletion of a Location.
+* `401 - Unauthorized` : This means the request was unauthorized, meaning something went wrong.
+* `500 - Server Error` : This means something went wrong with the delete function, resulting in a server crash.
+
+##### route.post('/:name', function(req, res) 
+This route calls the delete Location by name function in the Delete handler. The possible parameters are:
+* `name` : The name of the Location being deleted
 The possible returns are:
 * `200 - OK` - The function executed successfully, resulting in the deletion of a Location.
 * `401 - Unauthorized` : This means the request was unauthorized, meaning something went wrong.
@@ -111,6 +119,10 @@ This method finds a Location given an ID and updates the state. If no Location i
 If the request succeeds, it will return the Location matching the given ID and its updated state.
 
 #### Delete
-##### Location(id)
-This method finds a Location given an ID and deletes it. If there is an error during execution or the result is null, the method fails and is rejected.
+##### DeleteById(id)
+This method finds a Location given an ID and sets the property `active` to false. If there is an error during execution or the result is null, the method fails and is rejected.
+If the method executes correctly, it sets active to false on the given Location.
+
+##### DeleteByName(id)
+This method finds a Location given a name and sets the property `active` to false. If there is an error during execution or the result is null, the method fails and is rejected.
 If the method executes correctly, it sets active to false on the given Location.
