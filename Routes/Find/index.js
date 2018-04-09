@@ -2,10 +2,10 @@
 var route = require('express').Router();
 var Finder = new(require('../../Handlers/Find'))();
 
-route.get('/:id', function(req, res) {
+route.get('/all', function(req, res) {
     try {
-        Finder.FindById(req.params.id).then(location => {
-            res.status(200).send(location);
+        Finder.FindAll().then(locations => {
+            res.status(200).send(locations);
         }).catch(error => {
             res.status(404).send("{ error : " + error + "}");
         });
@@ -26,10 +26,10 @@ route.get('/name', function(req, res) {
     }
 });
 
-route.get('/all', function(req, res) {
+route.get('/:id', function(req, res) {
     try {
-        Finder.FindAll().then(locations => {
-            res.status(200).send(locations);
+        Finder.FindById(req.params.id).then(location => {
+            res.status(200).send(location);
         }).catch(error => {
             res.status(404).send("{ error : " + error + "}");
         });
@@ -37,6 +37,5 @@ route.get('/all', function(req, res) {
         res.status(500).send("{ error : " + ex + " }");
     }
 });
-
 
 module.exports = route;

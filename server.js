@@ -1,8 +1,17 @@
 /* jshint esversion: 6*/
 var express = require('express'),
+    cors = require('cors'),
+    compression = require('compression'),
+    bodyParser = require('body-parser'),
     config = require('./Configuration');
 
 var app = express();
+
+app.use(cors());
+
+app.use(bodyParser.json());
+
+app.use(compression());
 
 var Find_Routes = require('./Routes/Find');
 var Insert_Routes = require('./Routes/Insert');
