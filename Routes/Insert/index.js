@@ -2,7 +2,7 @@
 var route = require('express').Router();
 var Inserter = new(require('../../Handlers/Insert'))();
 
-route.post('/add', function(req, res) {
+route.post('/', function(req, res) {
     try {
         Inserter.AddLocation(req.body).then(location => {
             res.status(201).send(location);
