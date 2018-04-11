@@ -1,0 +1,7 @@
+{
+    "name" : "delete-locations-handler",
+    "version" : "1.0.0",
+    "author" : "Henry Pye",
+    "description" : "A delete locations handler",
+    "main" : "index.js"
+}

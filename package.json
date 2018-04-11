@@ -19,7 +19,10 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
+<<<<<<< HEAD
     "compression": "^1.7.2",
+=======
+>>>>>>> a083bfab8a3386cc4fdcba3e63de546067def33a
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "mongoose": "^5.0.10"
