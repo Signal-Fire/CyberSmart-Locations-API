@@ -8,7 +8,7 @@ class Insert {
 
     AddLocation(location) {
         return new Promise(function(resolve, reject) {
-            var newLocation = new Location(Location);
+            var newLocation = new Location(location);
             newLocation.save(function(err, result) {
                 if (err || result === null)
                     return reject("Unable to save location");
