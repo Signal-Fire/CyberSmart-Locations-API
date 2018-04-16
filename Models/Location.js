@@ -17,6 +17,10 @@ var LocationSchema = new Schema({
         required: true,
         default: true
     },
+    created_by_user: {
+        type: String,
+        required : true,
+    },
     created: {
         type: Date,
         default: Date.now
