@@ -6,18 +6,11 @@ class Logger {
 
     }
 
-    CreateLog(log) {   
-        axios.post({
-            method : 'POST',
-            url : config["logger-url"] + '/create',
-            data : {
-                message : log.message,
-                created_by_user : 'System'
-            }
-        }).then(res => {
-            console.log('Created Log')
+    CreateLog(log) { 
+        axios.post(config["logger-url"] + "/create", log).then(res => {
+            return true;
         }).catch(err => {
-            console.log('Error Creating Log', err)
+            return false;
         })
     }
 }

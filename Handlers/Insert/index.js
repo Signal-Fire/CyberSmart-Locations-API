@@ -14,8 +14,8 @@ class Insert {
                     return reject("Unable to save location");
 
                 Logger.CreateLog({
-                    message : result.name + ' has been created',
-                    created_by_user : 'Henry'
+                    message : 'Added the ' + result.name,
+                    created_by_user : result.created_by_user
                 });
                 
                 return resolve(result);
