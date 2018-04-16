@@ -1,5 +1,5 @@
-/* jshint esversion: 6*/
 var Location = require('../../Models/Location');
+var Logger = require('../Logger');
 
 class Insert {
     constructor() {
@@ -13,6 +13,11 @@ class Insert {
                 if (err || result === null)
                     return reject("Unable to save location");
 
+                Logger.CreateLog({
+                    message : result.name + ' has been created',
+                    created_by_user : 'Henry'
+                });
+                
                 return resolve(result);
             });
         });

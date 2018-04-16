@@ -6,6 +6,17 @@ module.exports = class Delete {
 
     }
 
+    DeleteAll() {
+        return new Promise(function(resolve, reject) {
+            Location.remove({}, function(err ,result) {
+                if (err || result === null)
+                    return reject("Unable to delete all");
+
+                return resolve(true);
+            })
+        })
+    }
+
     DeleteById(id) {
         return new Promise(function(resolve, reject) {
             Location.findByIdAndUpdate(id, { active : false }, function(err, result) {

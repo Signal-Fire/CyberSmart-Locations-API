@@ -2,6 +2,14 @@
 var route = require('express').Router();
 var Deleter = new(require('../../Handlers/Delete'))();
 
+route.post('/all', function(req, res) {
+    Deleter.DeleteAll().then(deleted => {
+        res.status(200).send({ success : deleted });
+    }).catch(err => {
+        res.status(400).send({ error : error });
+    })
+})
+
 route.post('/:id', function(req, res) {
     try {
         Deleter.DeleteById(req.params.id).then(deleted => {
