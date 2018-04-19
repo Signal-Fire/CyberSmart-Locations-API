@@ -31,7 +31,8 @@ module.exports = class Delete {
                 
                 Logger.CreateLog({
                     message : 'Removed the ' + result.name,
-                    created_by_user : username
+                    created_by_user : username,
+                    type : "Location"
                 });   
 
                 return resolve(true);
@@ -47,8 +48,9 @@ module.exports = class Delete {
 
                 Logger.CreateLog({
                     message : 'Removed the ' + result.name,
-                    created_by_user : username
-                });   
+                    created_by_user : username,
+                    type : "Location"
+                });    
 
                 return resolve(true);
             });

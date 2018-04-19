@@ -15,7 +15,8 @@ class Insert {
 
                 Logger.CreateLog({
                     message : 'Added the ' + result.name,
-                    created_by_user : result.created_by_user
+                    created_by_user : result.created_by_user,
+                    type : "Location"
                 });
                 
                 return resolve(result);

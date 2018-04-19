@@ -7,7 +7,6 @@ route.post('/', function(req, res) {
         Inserter.AddLocation(req.body).then(location => {
             res.status(201).send(location);
         }).catch(error => {
-            console.log(error);
             res.status(400).send({ error : "Error during insert"});
         });
     } catch (ex) {
