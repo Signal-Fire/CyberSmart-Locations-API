@@ -1,0 +1,6 @@
+{
+    "name" : "find-location-handler",
+    "version" : "1.0.0",
+    "author" : "Henry Pye",
+    "main" : "index.js"
+}
