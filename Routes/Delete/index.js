@@ -13,7 +13,7 @@ route.post('/all', function(req, res) {
 route.post('/:id', function(req, res) {
     try {
         Deleter.DeleteById(req.params.id, req.body.username).then(deleted => {
-            res.status(200).send({ success : deleted });
+            res.status(200).send(deleted);
         }).catch(error => {
             res.status(400).send({ error : error});
         });
