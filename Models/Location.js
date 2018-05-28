@@ -21,7 +21,7 @@ var LocationSchema = new Schema({
         type: String,
         required : true,
     },
-    created: {
+    created_timestamp: {
         type: Date,
         default: Date.now
     }
